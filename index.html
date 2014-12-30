@@ -11,12 +11,9 @@
 			function load() {
 				ld.src = "s.php?id=" + (new Date().getTime() / 1000);
 			}
-			function delay(){ 
-				setTimeout('load()', 400000);
-			}
 		</script>
 	</head>
 	<body>
-		<iframe width="600" height="300" id="ld" onload="delay()" border="0"></iframe>
+		<iframe width="600" height="300" id="ld" onload="load()" border="0"></iframe>
 	</body>
 </html>
