@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>Scrape</title>
+		<script type="text/javascript">
+			var ld;
+			var t;
+			window.onload = function() {
+				ld = document.getElementById("ld");
+				load();
+			}
+			function status() {
+				var w = ld.contentDocument? 
+					ld.contentDocument : ld.contentWindow.document;
+				var b = w.getElementsByTagName('body')[0];
+				w.scrollTo( 0, b.offsetHeight );
+				setTimeout( 'status()', 1000 );
+			}
+			function docHeight( doc ) {
+				doc = doc || document;
+				var body = doc.body, html = doc.documentElement;
+				return Math.max( 
+					body.scrollHeight, 
+					body.offsetHeight, 
+					html.clientHeight, 
+					html.scrollHeight, 
+					html.offsetHeight 
+				);
+
+			}
+			function load() {
+				ld.src = "s.php?id=" + (new Date().getTime() / 1000);
+				status();
+			}
+			function delay(){ 
+				setTimeout('load()', 200000);
+			}
+		</script>
+	</head>
+	<body>
+		<iframe width="600" height="300" id="ld" onload="delay()" border="0"></iframe>
+	</body>
+</html>
